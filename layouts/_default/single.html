@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+{{ partial "navigation.html" . }}
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+          {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
+        {{ .Content }}
+      </div>
+      {{ if .Params.preview_posts }}
+        <div class="col-lg-8 offset-lg-2">
+          <h1>{{ i18n "latest_posts" }}</h1>
+        </div>
+        {{ range first 3 (where .Site.RegularPages "Type" .Params.preview_posts) }}
+          {{ .Render "article" }}
+        {{ end }}
+        <div class="col-12 text-center">
+          <a class="btn btn-main" href="{{ `blog/` | absLangURL }}">{{ i18n "view_all" }}</a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

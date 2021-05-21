@@ -1,0 +1,18 @@
+- id: author
+  translation: Author
+- id: contact_us
+  translation: Contact Me
+- id: date
+  translation: Date
+- id: latest_posts
+  translation: Latest Posts
+- id: message
+  translation: Message
+- id: send
+  translation: Send
+- id: socials
+  translation: Socials
+- id: view_all
+  translation: View All
+- id: your_email
+  translation: Your Email

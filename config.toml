@@ -1,0 +1,19 @@
+title = "Riddim Rider"
+paginate = "9"
+
+[[params.plugins.css]]
+link = "/css/bootstrap.min.css"
+[[params.plugins.css]]
+link = "/themify-icons/themify-icons.css"
+[[params.plugins.css]]
+link = "https://fonts.googleapis.com/css?family=Fira+Sans|Encode+Sans:400,600&display=swap"
+
+[[params.plugins.js]]
+link = "/js/jquery.min.js"
+[[params.plugins.js]]
+link = "/js/bootstrap.min.js"
+
+[params]
+logo = "/images/rr.png"
+google_analytics_id = ""
+copyright_from = "2021"

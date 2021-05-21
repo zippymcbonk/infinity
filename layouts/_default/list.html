@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+{{ partial "navigation.html" . }}
+
+<section id="blog" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ .Params.title }}</h1>
+      </div>
+      {{ $paginator := .Paginate .Data.Pages }}
+      {{ range $paginator.Pages }}
+      {{ .Render "article" }}
+      {{ end }}
+      <div class="col-12">
+        {{ template "_internal/pagination.html" . }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

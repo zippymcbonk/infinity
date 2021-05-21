@@ -1,0 +1,22 @@
+<footer id="footer">
+  <div class="container">
+    <div class="row wow fadeInUp" data-wow-duration="500ms">
+      <div class="col-xl-12">
+        {{"<!-- copyright -->" | safeHTML}}
+        <div class="copyright text-center">
+          {{ if .Site.Params.logo_footer }}
+            <a href="{{ site.Home.Permalink }}">
+              <img src="{{ .Site.Params.logo_footer }}" alt="{{ site.Title }}" class="logo-footer"/>
+            </a>
+            <br>
+          {{ end }}
+          <p>Copyright &copy; {{ site.Params.copyright_from }}-{{ now.Year }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{{ range site.Params.plugins.js}}
+<script src="{{ .link }}"></script>
+{{ end }}
