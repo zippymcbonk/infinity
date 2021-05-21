@@ -11,7 +11,7 @@ var loadphotoswipejs = 1
 
 /* TODO: Make the share function work */
 $( document ).ready(function() {
-    var items = []; // array of slide objects that will be passed to PhotoSwipe()
+    var galleries = {}; // array of slide objects that will be passed to PhotoSwipe()
 
     // for every figure element on the page:
     $('figure').each( function() {
@@ -23,6 +23,9 @@ $( document ).ready(function() {
             $src = $a.attr('href'),
             $title = $img.attr('alt'),
             $msrc = $img.attr('src');
+
+        var gallery_id = $figure.attr('class').replace("gallery_", "");
+
         // if data-size on <a> tag is set, read it and create an item
         if ($a.data('size')) {
             var $size = $a.data('size').split('x');
@@ -59,6 +62,12 @@ $( document ).ready(function() {
                 }
             }, 30);
         }
+
+        if (!(gallery_id in galleries)) {
+            galleries[gallery_id] = []
+        }
+
+        var items = galleries[gallery_id];
         // Save the index of this image then add it to the array
         var index = items.length;
         items.push(item);
