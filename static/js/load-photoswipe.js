@@ -9,51 +9,43 @@ if (window.loadphotoswipejs) {
 }
 var loadphotoswipejs = 1
 
-/* TODO: Make the share function work */
 $( document ).ready(function() {
-    var galleries = {}; // array of slide objects that will be passed to PhotoSwipe()
+    var galleries = {};
 
-    // for every figure element on the page:
-    $('figure').each( function() {
-        if ($(this).attr('class') == 'no-photoswipe') return true; // ignore any figures where class="no-photoswipe"
-        // get properties from child a/img/figcaption elements,
+    // for every figure element on the page
+    $('figure').each(function() {
+        if ($(this).attr('class') == 'no-photoswipe') return true;
+
         var $figure = $(this),
             $a = $figure.find('a'),
-            $img = $figure.find('img'),
-            $src = $a.attr('href'),
-            $title = $img.attr('alt'),
-            $msrc = $img.attr('src');
+            $img = $figure.find('img');
+
+        var item = {
+            src: $a.attr('href'),
+            title: $img.attr('alt'),
+            msrc: $img.attr('src'),
+            // temporary default size for when the "data-size" attribute wasn't set
+            w: 1920,
+            h: 1080
+        };
 
         var gallery_id = $figure.attr('class').replace("gallery_", "");
 
         // if data-size on <a> tag is set, read it and create an item
-        if ($a.data('size')) {
-            var $size = $a.data('size').split('x');
-            var item = {
-                src: $src,
-                w: $size[0],
-                h: $size[1],
-                title: $title,
-                msrc: $msrc
-            };
-            console.log("Using pre-defined dimensions for " + $src);
+        if ($figure.data('size')) {
+            [item["w"], item["h"]] = $figure.data('size').split('x');
+
+            //console.log("Using pre-defined dimensions for " + item["src"]);
         // if not, set temp default size then load the image to check actual size
         } else {
-            var item = {
-                src: $src,
-                w: 800, // temp default size
-                h: 600, // temp default size
-                title: $title,
-                msrc: $msrc
-            };
-            console.log("Using default dimensions for " + $src);
-            // load the image to check its dimensions
-            // update the item as soon as w and h are known (check every 30ms)
+            console.log("Using default dimensions for " + item["src"]);
+            // load the image to get its dimensions and updage the item (check every 30ms)
             var img = new Image();
-            img.src = $src;
+            img.src = item["src"];
             var wait = setInterval(function() {
                 var w = img.naturalWidth,
                     h = img.naturalHeight;
+
                 if (w && h) {
                     clearInterval(wait);
                     item.w = w;
@@ -68,13 +60,12 @@ $( document ).ready(function() {
         }
 
         var items = galleries[gallery_id];
-        // Save the index of this image then add it to the array
         var index = items.length;
         items.push(item);
-        // Event handler for click on a figure
+
         $figure.on('click', function(event) {
             event.preventDefault(); // prevent the normal behaviour i.e. load the <a> hyperlink
-            // Get the PSWP element and initialise it with the desired options
+
             var $pswp = $('.pswp')[0];
             var options = {
                 index: index,
