@@ -15,5 +15,5 @@ link = "/js/bootstrap.min.js"
 
 [params]
 logo = "/images/rr.png"
-google_analytics_id = ""
+google_analytics_id = "G-CBK5EYRYBR"
 copyright_from = "2021"

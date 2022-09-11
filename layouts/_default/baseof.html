@@ -19,6 +19,18 @@
 
   <link rel="shortcut icon" href="{{ `/images/favicon.png` }}" type="image/x-icon">
   <link rel="icon" href="{{ `/images/favicon.png` }}" type="image/x-icon">
+
+  {{ with site.Params.google_analytics_id }}
+  {{ "<!-- Global Site Tag (gtag.js) - Google Analytics -->" | safeHTML }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ . }}');
+  </script>
+  {{ end }}
 </head>
 
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="55">
