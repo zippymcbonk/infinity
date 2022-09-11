@@ -124,7 +124,7 @@ img[src$='#float'] {
 }
 
 .banner {
-  height: 180px;
+  height: 10em;
   background-size: cover;
   background-position: center center;
   position: relative;
