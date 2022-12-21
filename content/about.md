@@ -16,3 +16,7 @@ contact_list: # themify icon pack : https://themify.me/themify-icons
 contact_form: "https://formspree.io/f/mgerabdn"
 ---
 Hello, welcome to my website. I'm an enthusiast Onewheel rider and also an all-around DIY guy. I mod most things I own and a Onewheel is basically a modder's dream. This website is here to document and share my Onewheel work.
+
+Designing 3D models isn't cheap, and I give them away for free. If you printed my models and like them, please consider donating.
+
+{{<ko-fi>}}
