@@ -153,6 +153,10 @@ img[src$='#float'] {
     margin-right: 0.6em;
 }
 
+.navbar-nav .ti-instagram {
+    font-size: 1.5em;
+}
+
 .post-block {
   background-color: var(--block-background-color);
   color: var(--heading-color);
